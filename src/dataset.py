@@ -82,11 +82,12 @@ def val_split_maker(data_dir:str , videoids:list):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Prepare LLVIP Visible Dataset for YOLOv8")
     parser.add_argument("--raw-dir", type=str, default="data/raw", help="Path to raw LLVIP dataset")
+    parser.add_argument("--ann-dir", type=str, default="LLVIP/Annotations", help="Path to LLVIP annotation XMLs")
     parser.add_argument("--output-dir", type=str, default="data/processed", help="Path to output processed dataset")
     args = parser.parse_args()
-    
+
     prepare_llvip_visible(args.raw_dir, args.output_dir)
-    convert_split(args.raw_dir, "LLVIP/Annotations", args.output_dir, "train")
-    convert_split(args.raw_dir, "LLVIP/Annotations", args.output_dir, "test")
+    convert_split(args.raw_dir, args.ann_dir, args.output_dir, "train")
+    convert_split(args.raw_dir, args.ann_dir, args.output_dir, "test")
     print(val_split_maker(args.output_dir, ["12", "03", "04"]))
 

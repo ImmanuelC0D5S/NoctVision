@@ -31,3 +31,8 @@ runs/
 .idea/
 .DS_Store
 *.swp
+data/
+runs/
+*.pt
+*.zip
+venv/
